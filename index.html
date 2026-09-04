@@ -1,270 +1,276 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DasnaDas — 48-hour 9:16 clip pack</title>
-  <meta name="description" content="Original POV and cinematic verticals. Ten 1080×1920 shorts in 48 hours. $47." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ten scroll-stopping vertical videos, edited and delivered in 48 hours. A one-time $47 clip pack from DasnaDas.">
+  <meta name="theme-color" content="#0b0b0c">
+  <meta property="og:title" content="DasnaDas — Your next 10 shorts, handled.">
+  <meta property="og:description" content="Ten polished 9:16 edits. Captions included. Delivered in 48 hours.">
+  <meta property="og:image" content="assets/hero-cinematic.jpg">
+  <title>DasnaDas — 10 vertical shorts in 48 hours</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #07060a;
-      --ink: #f4efe6;
-      --mute: #a39b90;
-      --line: rgba(244,239,230,.14);
-      --gold: #e8c27a;
-      --violet: #7b6cff;
+      --ink: #0b0b0c;
+      --paper: #f1efe8;
+      --muted: #a09f99;
+      --line: rgba(241,239,232,.18);
+      --accent: #ff4d24;
+      --pad: clamp(22px, 4vw, 68px);
     }
+
     * { box-sizing: border-box; }
-    html, body { margin: 0; background: var(--bg); color: var(--ink); }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: "IBM Plex Mono", ui-monospace, monospace;
-      letter-spacing: .01em;
+      margin: 0;
+      color: var(--paper);
+      background: var(--ink);
+      font-family: Manrope, system-ui, sans-serif;
       overflow-x: hidden;
     }
-    .grain {
-      pointer-events: none;
-      position: fixed;
-      inset: 0;
-      z-index: 40;
-      opacity: .18;
-      mix-blend-mode: overlay;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.55'/></svg>");
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    ::selection { background: var(--accent); color: var(--ink); }
+
+    .noise {
+      position: fixed; inset: 0; z-index: 20; pointer-events: none; opacity: .045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
     }
-    .glow {
-      pointer-events: none;
-      position: fixed;
-      width: 70vw;
-      height: 70vw;
-      right: -20vw;
-      top: -20vw;
-      background: radial-gradient(circle, rgba(123,108,255,.28), transparent 62%);
-      filter: blur(12px);
-      z-index: 0;
+
+    .nav {
+      position: absolute; inset: 0 0 auto; z-index: 5;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 25px var(--pad); border-bottom: 1px solid rgba(255,255,255,.1);
     }
-    .glow.two {
-      left: -25vw;
-      top: 40vh;
-      right: auto;
-      background: radial-gradient(circle, rgba(232,194,122,.16), transparent 60%);
-    }
-    header, main, footer { position: relative; z-index: 1; }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 28px 7vw;
-      border-bottom: 1px solid var(--line);
-    }
-    .mark {
-      font-family: Syne, sans-serif;
-      font-weight: 800;
-      letter-spacing: .18em;
-      font-size: .78rem;
-    }
-    .nav a {
-      color: var(--mute);
-      text-decoration: none;
-      margin-left: 28px;
-      font-size: .72rem;
-    }
+    .brand { font-size: 16px; font-weight: 700; letter-spacing: -.04em; }
+    .brand-dot { color: var(--accent); }
+    .nav-meta { display: flex; align-items: center; gap: 28px; }
+    .mono { font: 500 10px/1.3 "DM Mono", monospace; letter-spacing: .12em; text-transform: uppercase; }
+    .nav-link { color: #d0cec8; transition: color .25s; }
+    .nav-link:hover { color: var(--accent); }
+
     .hero {
-      min-height: 88vh;
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 4vw;
-      padding: 8vh 7vw 10vh;
-      align-items: end;
+      position: relative; min-height: 100svh; display: flex; align-items: flex-end;
+      padding: 150px var(--pad) clamp(48px, 8vh, 90px); isolation: isolate;
     }
-    h1 {
-      font-family: "Instrument Serif", Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(3.4rem, 8vw, 8.4rem);
-      line-height: .86;
-      margin: 0 0 28px;
-      letter-spacing: -.04em;
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -2;
+      background: url("assets/hero-cinematic.jpg") center/cover no-repeat;
+      filter: saturate(.85) contrast(1.08);
     }
-    h1 em { font-style: italic; color: var(--gold); }
-    .lede {
-      max-width: 36rem;
-      color: var(--mute);
-      font-size: .82rem;
-      line-height: 1.7;
+    .hero::after {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(90deg, rgba(11,11,12,.97) 0%, rgba(11,11,12,.84) 37%, rgba(11,11,12,.25) 74%, rgba(11,11,12,.15)), linear-gradient(0deg, rgba(11,11,12,.86), transparent 48%);
     }
-    .price {
-      font-family: Syne, sans-serif;
-      font-weight: 700;
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      margin: 36px 0 18px;
+    .hero-copy { max-width: 1120px; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; color: #cbc9c2; margin-bottom: 24px; }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--accent); }
+    h1 { margin: 0; max-width: 900px; font-size: clamp(52px, 8.7vw, 132px); line-height: .86; letter-spacing: -.075em; font-weight: 500; }
+    h1 em { display: block; color: var(--accent); font-style: normal; }
+    .hero-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-top: clamp(34px, 6vh, 72px); }
+    .lede { max-width: 520px; margin: 0; color: #cbc9c2; font-size: clamp(16px, 1.4vw, 20px); line-height: 1.55; }
+    .cta { display: inline-flex; align-items: center; justify-content: space-between; gap: 34px; min-width: 220px; padding: 19px 21px; border: 1px solid var(--paper); border-radius: 100px; font-size: 13px; font-weight: 600; transition: .25s ease; }
+    .cta::after { content: "↗"; font-size: 17px; }
+    .cta:hover { color: var(--ink); background: var(--paper); transform: translateY(-2px); }
+
+    .ticker { overflow: hidden; padding: 17px 0; background: var(--accent); color: var(--ink); }
+    .ticker-track { width: max-content; display: flex; animation: ticker 26s linear infinite; }
+    .ticker span { font: 500 11px/1 "DM Mono", monospace; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
+    .ticker b { padding: 0 22px; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+
+    section { padding: clamp(90px, 12vw, 180px) var(--pad); }
+    .section-label { display: flex; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid var(--line); color: var(--muted); }
+    .statement { max-width: 1180px; margin: clamp(48px, 8vw, 110px) 0 0; font-size: clamp(36px, 6vw, 88px); line-height: 1.02; letter-spacing: -.06em; font-weight: 500; }
+    .statement .dim { color: #555551; }
+
+    .deliverables { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 85px; border-top: 1px solid var(--line); }
+    .deliverable { min-height: 220px; padding: 24px 22px 26px 0; border-right: 1px solid var(--line); }
+    .deliverable + .deliverable { padding-left: 22px; }
+    .deliverable:last-child { border-right: 0; }
+    .deliverable .num { color: var(--accent); }
+    .deliverable h3 { margin: 65px 0 8px; font-size: 18px; letter-spacing: -.03em; }
+    .deliverable p { margin: 0; max-width: 230px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+
+    .work { background: var(--paper); color: var(--ink); }
+    .work .section-label { color: #686762; border-color: rgba(11,11,12,.18); }
+    .work-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin: 54px 0 50px; }
+    .work h2 { margin: 0; font-size: clamp(46px, 8vw, 112px); line-height: .9; letter-spacing: -.075em; font-weight: 500; }
+    .work-note { max-width: 300px; color: #686762; font-size: 13px; line-height: 1.6; }
+    .reel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
+    .reel { position: relative; aspect-ratio: 9/16; overflow: hidden; background: #171718; color: var(--paper); }
+    .reel::before { content: ""; position: absolute; inset: 0; background: var(--bg); background-size: cover; transition: transform .65s cubic-bezier(.2,.8,.2,1); }
+    .reel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.88), transparent 62%); }
+    .reel:hover::before { transform: scale(1.045); }
+    .reel:nth-child(1) { --bg: radial-gradient(circle at 70% 18%, #ff6845, transparent 25%), linear-gradient(145deg,#151517 20%,#542113 64%,#0a0a0b); }
+    .reel:nth-child(2) { --bg: radial-gradient(circle at 25% 35%,#4b64d9,transparent 22%), linear-gradient(35deg,#070b18,#151515 60%,#47332b); transform: translateY(54px); }
+    .reel:nth-child(3) { --bg: radial-gradient(circle at 55% 60%,#d5a66c,transparent 20%), linear-gradient(145deg,#0d0d0e,#283e54 60%,#080808); }
+    .reel:nth-child(4) { --bg: radial-gradient(circle at 75% 42%,#b73922,transparent 18%), linear-gradient(25deg,#0c0c0c,#303030 55%,#0a1c38); transform: translateY(54px); }
+    .reel-copy { position: absolute; z-index: 2; inset: auto 20px 22px; }
+    .reel-kicker { color: #bbb8b0; }
+    .reel h3 { margin: 10px 0 0; font-size: clamp(17px, 1.7vw, 27px); line-height: 1.08; letter-spacing: -.045em; font-weight: 500; }
+
+    .process-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(50px, 10vw, 150px); margin-top: 65px; }
+    .process-intro { position: sticky; top: 40px; align-self: start; }
+    .process-intro h2 { margin: 0; font-size: clamp(40px, 5vw, 72px); line-height: .98; letter-spacing: -.06em; font-weight: 500; }
+    .process-intro p { max-width: 330px; color: var(--muted); line-height: 1.7; font-size: 14px; }
+    .steps { border-top: 1px solid var(--line); }
+    .step { display: grid; grid-template-columns: 70px 1fr auto; gap: 20px; align-items: baseline; padding: 31px 0; border-bottom: 1px solid var(--line); }
+    .step h3 { margin: 0; font-size: clamp(21px, 2.5vw, 34px); letter-spacing: -.045em; font-weight: 500; }
+    .step p { margin: 0; color: var(--muted); font-size: 13px; }
+    .step-mark { color: var(--accent); font-size: 20px; }
+
+    .price-section { padding-top: 0; }
+    .price-card { position: relative; overflow: hidden; display: grid; grid-template-columns: 1.2fr .8fr; min-height: 620px; background: var(--accent); color: var(--ink); }
+    .price-copy { padding: clamp(34px, 6vw, 90px); display: flex; flex-direction: column; justify-content: space-between; }
+    .price-copy h2 { margin: 15px 0 0; max-width: 780px; font-size: clamp(52px, 8vw, 118px); line-height: .86; letter-spacing: -.075em; font-weight: 500; }
+    .price-copy small { display: block; max-width: 430px; font-size: 13px; line-height: 1.6; }
+    .price-panel { padding: clamp(34px, 5vw, 72px); background: rgba(11,11,12,.96); color: var(--paper); display: flex; flex-direction: column; justify-content: space-between; }
+    .price-number { margin: 8px 0 0; font-size: clamp(82px, 10vw, 142px); line-height: 1; letter-spacing: -.08em; }
+    .price-number sup { vertical-align: top; font: 500 20px/1 "DM Mono", monospace; letter-spacing: 0; }
+    .price-list { list-style: none; padding: 0; margin: 35px 0; border-top: 1px solid var(--line); }
+    .price-list li { display: flex; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+    .price-list li::before { content: "✓"; color: var(--accent); }
+    .checkout { width: 100%; border-color: var(--accent); background: var(--accent); color: var(--ink); }
+    .checkout:hover { color: var(--paper); background: transparent; }
+    .availability { margin: 14px 0 0; color: var(--muted); text-align: center; font-size: 10px; }
+
+    footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; padding: 35px var(--pad) 42px; border-top: 1px solid var(--line); }
+    .footer-brand { font-size: clamp(42px, 8vw, 100px); line-height: .8; letter-spacing: -.08em; font-weight: 600; }
+    footer p { margin: 0; color: var(--muted); text-align: right; }
+
+    [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
+    [data-reveal].visible { opacity: 1; transform: none; }
+
+    @media (max-width: 820px) {
+      .nav-meta .nav-link { display: none; }
+      .hero { min-height: 850px; }
+      .hero-bottom, .work-head { align-items: flex-start; flex-direction: column; }
+      .hero-bottom .cta { margin-top: 12px; }
+      .deliverables { grid-template-columns: 1fr 1fr; }
+      .deliverable:nth-child(2) { border-right: 0; }
+      .reel-grid { grid-template-columns: 1fr 1fr; row-gap: 72px; }
+      .process-grid { grid-template-columns: 1fr; }
+      .process-intro { position: static; }
+      .price-card { grid-template-columns: 1fr; }
     }
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--ink);
-      color: var(--bg);
-      text-decoration: none;
-      padding: 16px 22px;
-      font-family: Syne, sans-serif;
-      font-weight: 700;
-      letter-spacing: .08em;
-      font-size: .72rem;
-      text-transform: uppercase;
+    @media (max-width: 520px) {
+      .hero { min-height: 760px; }
+      .hero::before { background-position: 64% center; }
+      .hero::after { background: linear-gradient(90deg, rgba(11,11,12,.98), rgba(11,11,12,.55)), linear-gradient(0deg, rgba(11,11,12,.9), transparent); }
+      h1 { font-size: clamp(50px, 16vw, 76px); }
+      .hero-bottom { margin-top: 38px; }
+      .cta { width: 100%; }
+      .deliverables { grid-template-columns: 1fr; margin-top: 60px; }
+      .deliverable, .deliverable + .deliverable { min-height: 160px; padding: 20px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .deliverable h3 { margin-top: 34px; }
+      .step { grid-template-columns: 40px 1fr; }
+      .step p { grid-column: 2; }
+      .step-mark { display: none; }
+      footer { align-items: flex-start; flex-direction: column; }
+      footer p { text-align: left; }
     }
-    .cta:hover { background: var(--gold); }
-    .phone {
-      justify-self: end;
-      width: min(280px, 70vw);
-      aspect-ratio: 9 / 16;
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      box-shadow: 0 40px 80px rgba(0,0,0,.45);
-    }
-    .screen {
-      height: 100%;
-      border-radius: 18px;
-      overflow: hidden;
-      background:
-        linear-gradient(180deg, transparent 0%, rgba(7,6,10,.55) 70%),
-        radial-gradient(circle at 30% 20%, #7b6cff 0%, transparent 42%),
-        radial-gradient(circle at 80% 80%, #e8c27a 0%, transparent 38%),
-        #111;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 22px;
-    }
-    .screen small { color: var(--gold); font-size: .62rem; }
-    .screen p {
-      font-family: "Instrument Serif", serif;
-      font-size: 1.35rem;
-      line-height: 1.15;
-      margin: 8px 0 0;
-    }
-    section { padding: 10vh 7vw; border-top: 1px solid var(--line); }
-    h2 {
-      font-family: "Instrument Serif", serif;
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      font-weight: 400;
-      margin: 0 0 32px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-    .card {
-      border: 1px solid var(--line);
-      padding: 18px 16px 22px;
-      min-height: 140px;
-      background: rgba(255,255,255,.02);
-    }
-    .card span {
-      display: block;
-      color: var(--gold);
-      font-size: .62rem;
-      margin-bottom: 10px;
-    }
-    .card p {
-      font-family: "Instrument Serif", serif;
-      font-size: 1.05rem;
-      line-height: 1.25;
-      margin: 0;
-    }
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8vw;
-    }
-    ul { padding-left: 1.1rem; color: var(--mute); line-height: 1.9; }
-    .note { color: var(--mute); font-size: .78rem; max-width: 42rem; }
-    footer {
-      padding: 28px 7vw 40px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      color: var(--mute);
-      font-size: .7rem;
-    }
-    @media (max-width: 900px) {
-      .hero, .split, .grid { grid-template-columns: 1fr; }
-      .phone { justify-self: start; margin-top: 40px; }
-      header { padding: 20px 6vw; }
-      .nav a { margin-left: 16px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      [data-reveal] { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="glow" aria-hidden="true"></div>
-  <div class="glow two" aria-hidden="true"></div>
-  <header>
-    <div class="mark">DASNADAS</div>
-    <nav class="nav">
-      <a href="#pack">Pack</a>
-      <a href="#reel">Portfolio</a>
-      <a href="#buy">Buy</a>
-    </nav>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="DasnaDas home">dasna<span class="brand-dot">/</span>das</a>
+    <div class="nav-meta mono">
+      <a class="nav-link" href="#work">Selected work</a>
+      <a class="nav-link" href="#process">Process</a>
+      <span>Open for projects · 2026</span>
+    </div>
   </header>
+
   <main>
-    <section class="hero" id="pack">
-      <div>
-        <h1>48-hour<br /><em>9:16</em><br />clip pack</h1>
-        <p class="lede">Original POV and cinematic verticals for TikTok, Reels, and Shorts. Ten owned 1080×1920 MP4s, captions included. If you supply a licensed VOD, we also cut streamer clips. Customers are charged at checkout.</p>
-        <p class="price">$47 · one-time · 10 vertical shorts</p>
-        <a class="cta" id="buy" href="mailto:jigpatel01234@gmail.com?subject=48-hour%209:16%20clip%20pack%20%2447">Reserve the pack</a>
-      </div>
-      <div class="phone" aria-hidden="true">
-        <div class="screen">
-          <small>OWNED ORIGINAL · 6s</small>
-          <p>POV: the last train left and the platform stayed lit</p>
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <div class="eyebrow mono">Short-form, fully handled</div>
+        <h1>Stop scrolling.<em>Start watching.</em></h1>
+        <div class="hero-bottom">
+          <p class="lede">Ten polished vertical edits built to hold attention—cut, captioned, and delivered in 48 hours.</p>
+          <a class="cta" href="#checkout">Get the clip pack</a>
         </div>
       </div>
     </section>
-    <section>
-      <h2>What you get</h2>
-      <div class="split">
-        <ul>
-          <li>10 vertical MP4s at 1080×1920</li>
-          <li>TikTok caption (≤150 chars) and Instagram caption with hashtags</li>
-          <li>48-hour turnaround after stills or a licensed VOD land</li>
-          <li>One revision pass</li>
-        </ul>
-        <p class="note">Not included: studio movie or TV-show rips, casino/crypto bounty campaigns, or posting to an account you do not operate. Higgsfield-style originals and licensed Hololive VODs only.</p>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>10 vertical edits <b>✦</b> 48-hour delivery <b>✦</b> captions included <b>✦</b> one revision <b>✦</b> $47 once <b>✦</b></span>
+        <span>10 vertical edits <b>✦</b> 48-hour delivery <b>✦</b> captions included <b>✦</b> one revision <b>✦</b> $47 once <b>✦</b></span>
+      </div>
+    </div>
+
+    <section class="about">
+      <div class="section-label mono"><span>01 / The offer</span><span>Built for vertical</span></div>
+      <p class="statement" data-reveal>You bring the idea. <span class="dim">We turn it into ten sharp, native-feeling shorts ready for TikTok, Reels, and YouTube.</span></p>
+      <div class="deliverables">
+        <article class="deliverable" data-reveal><span class="num mono">01</span><h3>10 vertical MP4s</h3><p>Clean 1080×1920 exports, composed specifically for the phone screen.</p></article>
+        <article class="deliverable" data-reveal><span class="num mono">02</span><h3>Platform captions</h3><p>TikTok copy plus an Instagram-ready caption and hashtags for every edit.</p></article>
+        <article class="deliverable" data-reveal><span class="num mono">03</span><h3>48-hour delivery</h3><p>The clock starts when your stills or licensed source footage lands.</p></article>
+        <article class="deliverable" data-reveal><span class="num mono">04</span><h3>One revision pass</h3><p>A focused round of changes to make the final pack feel right.</p></article>
       </div>
     </section>
-    <section id="reel">
-      <h2>Portfolio (owned originals)</h2>
-      <div class="grid">
-        <article class="card"><span>01</span><p>POV: you open the group chat and they already decided without you</p></article>
-        <article class="card"><span>02</span><p>They said the meeting was five minutes</p></article>
-        <article class="card"><span>03</span><p>The notification that ruined the night</p></article>
-        <article class="card"><span>04</span><p>POV: they left you on read and the city kept going</p></article>
-        <article class="card"><span>05</span><p>POV: you show up and the five-minute standup already ended</p></article>
-        <article class="card"><span>06</span><p>POV: the calendar said optional and the whole team is there</p></article>
-        <article class="card"><span>07</span><p>POV: you were on mute the whole time</p></article>
-        <article class="card"><span>08</span><p>POV: they screenshared the wrong tab</p></article>
-        <article class="card"><span>09</span><p>POV: you walked into the wrong alley</p></article>
-        <article class="card"><span>10</span><p>POV: the rain decided the night for you</p></article>
-        <article class="card"><span>11</span><p>POV: you waited on the pier and they never came</p></article>
-        <article class="card"><span>12</span><p>POV: the elevator opened on the wrong floor</p></article>
-        <article class="card"><span>13</span><p>POV: the standup invite landed at 2am</p></article>
-        <article class="card"><span>14</span><p>POV: they took the last coffee and left the pot empty</p></article>
-        <article class="card"><span>15</span><p>POV: you were the last one still on the call</p></article>
-        <article class="card"><span>16</span><p>POV: you were the last one in the office and the lights stayed on</p></article>
-        <article class="card"><span>17</span><p>POV: the printer started a job from last week</p></article>
-        <article class="card"><span>18</span><p>POV: the last train left and the platform stayed lit</p></article>
-        <article class="card"><span>19</span><p>POV: the diner was still open and nobody came</p></article>
+
+    <section class="work" id="work">
+      <div class="section-label mono"><span>02 / Selected concepts</span><span>Owned originals</span></div>
+      <div class="work-head">
+        <h2 data-reveal>Made to<br>feel native.</h2>
+        <p class="work-note">Original POV and cinematic concepts—not recycled movie or TV footage. Each idea is designed for the rhythm of the feed.</p>
+      </div>
+      <div class="reel-grid">
+        <article class="reel" data-reveal><div class="reel-copy"><span class="reel-kicker mono">POV / Social</span><h3>They already decided without you.</h3></div></article>
+        <article class="reel" data-reveal><div class="reel-copy"><span class="reel-kicker mono">POV / Work</span><h3>The meeting was “five minutes.”</h3></div></article>
+        <article class="reel" data-reveal><div class="reel-copy"><span class="reel-kicker mono">POV / Night</span><h3>The notification that ruined it.</h3></div></article>
+        <article class="reel" data-reveal><div class="reel-copy"><span class="reel-kicker mono">POV / Cinema</span><h3>The last train already left.</h3></div></article>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="section-label mono"><span>03 / How it works</span><span>Simple by design</span></div>
+      <div class="process-grid">
+        <div class="process-intro" data-reveal><h2>From raw to ready in three moves.</h2><p>No bloated agency process. No month-long production calendar. Just a tight brief, a clean edit, and files you can post.</p></div>
+        <div class="steps">
+          <article class="step" data-reveal><span class="mono">01</span><h3>Send the source</h3><p>Stills, original footage, or a VOD you have the rights to use.</p><span class="step-mark">↘</span></article>
+          <article class="step" data-reveal><span class="mono">02</span><h3>We cut the pack</h3><p>Pacing, typography, audio treatment, captions, and platform framing.</p><span class="step-mark">↘</span></article>
+          <article class="step" data-reveal><span class="mono">03</span><h3>You get ten finals</h3><p>Ten 1080×1920 MP4s plus ready-to-use social copy in 48 hours.</p><span class="step-mark">✓</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="price-section" id="checkout">
+      <div class="price-card" data-reveal>
+        <div class="price-copy"><div><span class="mono">One pack. No retainer.</span><h2>Give your feed something worth watching.</h2></div><small>We only edit original content or footage you’re licensed to use. Studio movie and TV rips, casino and crypto bounty campaigns, and posting to accounts you don’t operate are not included.</small></div>
+        <div class="price-panel">
+          <div><span class="mono">The 48-hour clip pack</span><p class="price-number"><sup>$</sup>47</p><span class="mono">One-time payment</span></div>
+          <div><ul class="price-list"><li>10 polished vertical shorts</li><li>Captions and hashtags</li><li>48-hour turnaround</li><li>One revision pass</li></ul><a class="cta checkout" href="mailto:jigpatel01234@gmail.com?subject=Reserve%20the%2048-hour%209%3A16%20clip%20pack">Reserve the pack</a><p class="availability mono">Live checkout activates after account verification</p></div>
+        </div>
       </div>
     </section>
   </main>
-  <footer>
-    <span>DasnaDas clip service</span>
-    <span>Payment is collected at checkout when the live Stripe link is issued. TEST buy.stripe.com links are not revenue.</span>
-  </footer>
+
+  <footer><div class="footer-brand">dasna/das</div><p class="mono">Short-form editing<br>Built for attention</p></footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
